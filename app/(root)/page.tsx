@@ -1,11 +1,20 @@
-import React from 'react'
+import SearchForm from "@/components/SearchForm";
 
-type Props = {}
+const page = async ({ searchParams }: { searchParams: Promise<{ query?: string }> }) => {
+  const query = (await searchParams).query;
 
-const page = (props: Props) => {
   return (
     <>
-      <h1 className='text-2xl'>Home</h1>
+      <section className='pink_container'>
+        <h1 className='heading'>
+          Pitch your startup, <br />
+          Connect with Entrepreneurs
+        </h1>
+        <p className='sub-heading !max-w-3xl'>
+          Submit Ideas, Vote on pitches, and get Noticed in virtual competition
+        </p>
+        <SearchForm query={query} />
+      </section>
     </>
   )
 }
