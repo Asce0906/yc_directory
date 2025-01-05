@@ -5,28 +5,27 @@ import React from 'react'
 
 type Props = {}
 
-const Navbar = async(props: Props) => {
+const Navbar = async (props: Props) => {
     const session = await auth();  // can be performed only on the server component
 
-  return (
+    return (
         <header className='px-5 py-3 bg-white shadow-sm font-work-sans'>
             <nav className='flex justify-between items-center'>
                 <Link href='/'>
                     <Image src="/logo.png" alt='app-logo' width={144} height={30} />
                 </Link>
 
-                <div className='flex items-center gap-5 text-black'>
+                <div className='flex items-center gap-5  text-black'>
                     {session && session?.user ? (
                         <>
                             <Link href="/startup/create">
                                 <span>Create</span>
                             </Link>
 
-                            <form action={async() => {
+                            <form action={async () => {
                                 "use server";
-                                await signOut({redirectTo: "/"});
-                            }
-                            }>
+                                await signOut({ redirectTo: "/" });
+                            }}>
                                 <button type='submit'>Logout</button>
                             </form>
 
@@ -35,7 +34,7 @@ const Navbar = async(props: Props) => {
                             </Link>
                         </>
                     ) : (
-                        <form action={async() => {
+                        <form action={async () => {
                             "use server";
                             await signIn('github')
                         }}>
@@ -47,7 +46,7 @@ const Navbar = async(props: Props) => {
                 </div>
             </nav>
         </header>
-  )
+    )
 }
 
 export default Navbar
