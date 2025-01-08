@@ -10,6 +10,16 @@ const nextConfig: NextConfig = {
         hostname: '*'     //allow images from all the sources
       }
     ]
+  },
+  experimental: {
+    ppr: 'incremental'
+  },
+
+  // Indicators
+  devIndicators: {
+    appIsrStatus: true,
+    buildActivity: true,
+    buildActivityPosition: 'bottom-right'
   }
 };
 
